@@ -29,5 +29,18 @@ public class JodaTimeCurrentDateTime {
 
         String new_hour = String.valueOf(london_time) + ":"+time_london[1] + ":"+ time_london[2];
         System.out.println("Current Time in London: " + new_hour);
+
+        // Current time in Reykjavik
+        String []time_reykjavik = String.valueOf(currentTime).split(":");
+        int hour = Integer.parseInt(time_reykjavik[0]);
+        int reykjavik_time = hour + 3;
+
+        if(reykjavik_time>=24){
+            reykjavik_time -= 24;
+        }
+
+        String new_hour = String.valueOf(reykjavik_time) + ":"+time_reykjavik[1] + ":"+ time_reykjavik[2];
+        System.out.println("Current Time in Reykjavik: " + new_hour);
+        
     }
 }
