@@ -22,7 +22,7 @@ public class Time {
             return LocalTime.parse(now, formato);
         } catch (DateTimeParseException e) {
             System.err.println("Erro ao reconhecer a hora: " + e.getMessage());
-            return LocalTime.parse("00:00:00.0", formato);
+            return LocalTime.parse("00:00:00.000", formato);
         }
     }
     public String LondonTime(DateTime time_now){
