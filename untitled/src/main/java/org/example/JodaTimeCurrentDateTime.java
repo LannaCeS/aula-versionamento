@@ -34,6 +34,5 @@ public class JodaTimeCurrentDateTime {
 
         // Current time in Reykjavik
         tempo.ReykjavikTime(date);
-
     }
 }
