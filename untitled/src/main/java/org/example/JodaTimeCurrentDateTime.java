@@ -4,43 +4,35 @@ import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
 
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+
 public class JodaTimeCurrentDateTime {
     public static void main(String[] args) {
-        // Get current date and time with time zone
-        DateTime now = DateTime.now();
-        System.out.println("Current DateTime: " + now);
 
-        // Get current date
-        LocalDate today = LocalDate.now();
-        System.out.println("Current LocalDate: " + today);
+        Time tempo = new Time();
+
+        // Get current time and date
+        DateTime date = tempo.getTime();
+        System.out.println("Current time and date: "+ date);
+
+        // Ask for current time
+        try {
+            Scanner info = new Scanner(System.in);
+            String now = info.nextLine();
+            java.time.LocalTime time = tempo.askTime(now);
+        }catch (DateTimeParseException e){
+            System.err.println("Erro ao reconhecer a hora.");
+        }
 
         // Get current time
         LocalTime currentTime = LocalTime.now();
         System.out.println("Current LocalTime: " + currentTime);
 
         // Current time in London
-        String []time_london = String.valueOf(currentTime).split(":");
-        int hour = Integer.parseInt(time_london[0]);
-        int london_time = hour + 4;
-
-        if(london_time>=24){
-            london_time -= 24;
-        }
-
-        String new_hour = String.valueOf(london_time) + ":"+time_london[1] + ":"+ time_london[2];
-        System.out.println("Current Time in London: " + new_hour);
+        tempo.LondonTime(date);
 
         // Current time in Reykjavik
-        String []time_reykjavik = String.valueOf(currentTime).split(":");
-        int hour = Integer.parseInt(time_reykjavik[0]);
-        int reykjavik_time = hour + 3;
-
-        if(reykjavik_time>=24){
-            reykjavik_time -= 24;
-        }
-
-        String new_hour = String.valueOf(reykjavik_time) + ":"+time_reykjavik[1] + ":"+ time_reykjavik[2];
-        System.out.println("Current Time in Reykjavik: " + new_hour);
-        
+        tempo.ReykjavikTime(date);
     }
 }
